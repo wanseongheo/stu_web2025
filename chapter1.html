@@ -1,12 +1,30 @@
-<!-- chapter1.html 예시 -->
+<!-- chapter1.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Chapter 1</title>
+  <meta charset="utf-8">
+  <title>Chapter 1</title>
+  <style>
+    /* 화면 거의 꽉 차게 보기 위한 간단한 스타일 */
+    .pdf-viewer {
+      width: 100%;
+      height: 60vh;  /* 뷰포트 높이의 90 % */
+      border: none;
+    }
+  </style>
 </head>
 <body>
-    <h1>Chapter 1 내용</h1>
-    <p>이곳에 Chapter 1에 대한 요약이나 예제 내용을 작성</p>
+  <h1> 1주차 강의 자료</h1>
+
+  <!-- PDF가 안 보일 때를 대비한 다운로드 링크 -->
+  <p>
+    <a href="web-1-1-기초.pdf" download>PDF 직접 다운로드</a>
+  </p>
+
+  <!-- ① embed 방식 -->
+  <embed src="web-1-1-기초.pdf" type="application/pdf" class="pdf-viewer">
+
+  <!-- ② iframe 방식 (embed 대신 써도 됨) -->
+  <!-- <iframe src="chapter1.pdf#toolbar=0" class="pdf-viewer"></iframe> -->
 </body>
 </html>
