@@ -75,7 +75,6 @@ let timer = setInterval(() => { //timer 시작
 }, 2000);   //2초마다 setinterval 함수실행
 
 
-
 ================================================================================
 
 //setTimeout() 셋타임아웃 함수
@@ -85,7 +84,8 @@ setTimeout(() => {
   console.log("안녕하세요?")
 }, 3000);                     //3초후에 콘솔메시지"안녕하세요"
 
-================================================================================
+
+----------------------------------------------------------------------------------
 
 const JeaMok = document.querySelector("#title");
 const EReum = document.querySelector("#desc p");
@@ -94,3 +94,33 @@ const SaJin = document.querySelector("#profile img");
 JeaMok.onclick = () => JeaMok.innerText = "프로필";                 //Jeamok 이 #title 이니까 #title을 누르면 "프로필" 바뀐다.
 EReum.onclick = () => EReum.innerHTML = `이름 : <b>민들레</b>`;     //EReum이 #desc p 니까 도레미(기존)에서 민들레로  바뀜
 SaJin.onclick = () => SaJin.src = "images/pf2.png";
+
+
+----------------------------------------------------------------------------------
+/* selectMenu.option 선택창에서 뭘 누르면 displaySelect 되는 코드인듯?
+*/
+  
+		const selectMenu = document.querySelector("#major");  // 선택 목록을 가져와 selectMenu로 저장
+
+		function displaySelect() {
+			let selectedText = selectMenu.options[selectMenu.selectedIndex].innerText;		 //선택자 너무 복잡해서 모르겠다
+			alert(`[${selectedText}]를 선택했습니다.`);
+		}		
+
+		selectMenu.onchange = displaySelect;
+----------------------------------------------------------------------------------
+/*모달박스의 #open(클래스) 나 #close(클래스) 을 클릭했을때
+모달박스가 닫히거나 열리는(add, remove) 이벤트리스너 완성
+*/
+const open = document.querySelector("#open");
+const modalBox = document.querySelector("#modal-box");
+const close = document.querySelector("#close");
+
+open.addEventListener("click", () => {
+  modalBox.classList.add("active"); // 클릭하면 클래스리스트에 .active 스타일 추가
+});
+
+close.addEventListener("click", () => {
+  modalBox.classList.remove("active"); // 클릭하면 클래스리스트에서 .active 스타일 제거
+});
+  
