@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>9주차 강의내용 정리</title>
+</head>
+ 
+<body>
+  <p>9주차 내장객체 (3) </p>
+  <p>랜덤 배경 이미지 호출 </p>
+</body>
+
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;랜덤 배경 이미지&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/main.css&quot;&gt;
+  &lt;style&gt;    
+    body {
+      background-image:url('images/bg-1.jpg');
+      background-repeat:no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-size:cover;
+    }
+    h1 {
+      padding:20px 30px;
+      background-color:rgba(255,255,255,0.6);
+      border-radius:10px;
+      box-shadow:1px 2px 2px #222;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;문서를 다시 불러오세요.&lt;/h1&gt;
+
+  &lt;script src=&quot;js/changeBg-result.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<body>
+-------------------------------------------------------------------------------------
+</body>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>랜덤 배경 이미지</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>    
+    body {
+      background-image:url('images/bg-1.jpg');
+      background-repeat:no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-size:cover;
+    }
+    h1 {
+      padding:20px 30px;
+      background-color:rgba(255,255,255,0.6);
+      border-radius:10px;
+      box-shadow:1px 2px 2px #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>문서를 새로고침(F5) 하세요.</h1>
+
+  <script src="js/changeBg-result.js"></script>
+</body>
+</html>
