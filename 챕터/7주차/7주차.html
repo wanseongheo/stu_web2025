@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>7주차 강의내용 정리</title>
+</head>
+ 
+<body>
+  <p>7주차 DOM 활용 (2) </p>
+
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ko&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Book List&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/bookList.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;container&quot;&gt;
+    &lt;h1&gt;Book List&lt;/h1&gt;
+    &lt;form&gt;
+      &lt;ul id=&quot;bookInfo&quot;&gt;
+        &lt;li&gt;
+          &lt;label for=&quot;title&quot;&gt;제 목&lt;/label&gt;
+          &lt;input type=&quot;text&quot; id=&quot;title&quot;&gt;
+        &lt;/li&gt;    
+        &lt;li&gt;
+          &lt;label for=&quot;author&quot;&gt;저 자&lt;/label&gt;
+          &lt;input type=&quot;text&quot; id=&quot;author&quot;&gt;
+        &lt;/li&gt;   
+      &lt;/ul&gt;
+
+      &lt;button type=&quot;reset&quot;&gt;취소하기&lt;/button&gt;
+      &lt;button id=&quot;save&quot;&gt;저장하기&lt;/button&gt;
+    &lt;/form&gt;
+    
+    &lt;ul id=&quot;bookList&quot;&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+  
+  &lt;script src=&quot;js/bookList-result.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</body>
+-------------------------------------------------------------------------------------
+<body>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book List</title>
+  <link rel="stylesheet" href="css/bookList.css">
+</head>
+<body>
+  <div id="container">
+    <h1>Book List</h1>
+    <form>
+      <ul id="bookInfo">
+        <li>
+          <label for="title">제 목</label>
+          <input type="text" id="title">
+        </li>    
+        <li>
+          <label for="author">저 자</label>
+          <input type="text" id="author">
+        </li>   
+      </ul>
+  
+      <button type="reset">취소하기</button>
+      <button id="save">저장하기</button>
+    </form>
+    
+    <ul id="bookList"></ul>
+  </div>
+  
+  <script src="js/bookList-result.js"></script>
+</body>
+</html>
+

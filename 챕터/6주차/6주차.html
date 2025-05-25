@@ -32,6 +32,17 @@
   &lt;/div&gt;
 
   &lt;script src=&quot;js/js-content-2.js&quot;&gt;&lt;/script&gt;
+  //js코드
+  <pre><code>
+const JeaMok = document.querySelector(&quot;#title&quot;);
+const EReum = document.querySelector(&quot;#desc p&quot;);
+const SaJin = document.querySelector(&quot;#profile img&quot;);
+
+JeaMok.onclick = () =&gt; JeaMok.innerText = &quot;프로필&quot;;                 //Jeamok 이 #title 이니까 #title을 누르면 "프로필" 바뀐다.
+EReum.onclick = () =&gt; EReum.innerHTML = `이름 : &lt;b&gt;민들레&lt;/b&gt;`;     //EReum이 #desc p 니까 도레미(기존)에서 민들레로  바뀜
+SaJin.onclick = () =&gt; SaJin.src = &quot;images/pf2.png&quot;;
+</code></pre>
+
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
