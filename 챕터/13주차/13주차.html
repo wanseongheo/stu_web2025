@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>디버그용 - 원자력 발전 현황</title>
+</head>
+<body>
+  <h2>원자력 발전소 실시간 데이터</h2>
+  <pre id="result">불러오는 중...</pre>
+  <pre id="error" style="color: red;"></pre>
+<pre><code>
+const url = "http://data.khnp.co.kr/environ/service/realtime/pwr?serviceKey=...";
+
+fetch(url)
+  .then(res => {
+    if (!res.ok) throw new Error("HTTP 오류: " + res.status);
+    return res.text();
+  })
+  .then(xmlText => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, "application/xml");
+    const resultCode = xml.querySelector("resultCode")?.textContent;
+    const resultMsg = xml.querySelector("resultMsg")?.textContent;
+
+    if (resultCode !== "00") {
+      throw new Error(`API 오류: ${resultMsg} (코드 ${resultCode})`);
+    }
+
+    const items = xml.querySelectorAll("item");
+    let html = "";
+
+    items.forEach(item => {
+      const name = item.querySelector("expl")?.textContent;
+      const value = item.querySelector("value")?.textContent;
+      const time = item.querySelector("time")?.textContent;
+
+      html += `✅ ${name}: ${value} MWe (측정: ${time})\n`;
+    });
+
+    document.getElementById("result").innerText = html;
+  })
+  .catch(err => {
+    document.getElementById("error").innerText = "요청 실패: " + err.message;
+  });
+</code></pre>
+
+  <script>
+    const url = "http://data.khnp.co.kr/environ/service/realtime/pwr?serviceKey=yp9br8zY5HYVw9qRJMIoX5atZKelfO4MBqRsDmlJYb704cYxWF5guYzIL4SwZ04911iYYTO6Usv4CLZo%2F6x7Ag%3D%3D&genName=WS";
+
+    fetch(url)
+      .then(res => {
+        if (!res.ok) throw new Error("HTTP 오류: " + res.status);
+        return res.text();
+      })
+      .then(xmlText => {
+        try {
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(xmlText, "application/xml");
+
+          const resultCode = xml.querySelector("resultCode")?.textContent;
+          const resultMsg = xml.querySelector("resultMsg")?.textContent;
+
+          if (resultCode !== "00") {
+            throw new Error(`API 오류: ${resultMsg} (코드 ${resultCode})`);
+          }
+
+          const items = xml.querySelectorAll("item");
+          let html = "";
+
+          items.forEach(item => {
+            const name = item.querySelector("expl")?.textContent;
+            const value = item.querySelector("value")?.textContent;
+            const time = item.querySelector("time")?.textContent;
+
+            html += `✅ ${name}: ${value} MWe (측정: ${time})\n`;
+          });
+
+          document.getElementById("result").innerText = html;
+        } catch (e) {
+          document.getElementById("error").innerText = "XML 파싱 에러: " + e.message;
+        }
+      })
+      .catch(err => {
+        document.getElementById("error").innerText = "요청 실패: " + err.message;
+      });
+  </script>
+</body>
+</html>
