@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>원자력발전소 실시간 출력</title>
+</head>
+<body>
+  <h2>고리 원자력 발전소 출력 정보</h2>
+  <pre id="result">불러오는 중...</pre>
+
+  <script>
+    var xhr = new XMLHttpRequest();
+    var url = 'http://data.khnp.co.kr/environ/service/realtime/pwr'; // API 주소
+    var queryParams = '?genName=KR'; // 고리 발전소
+
+    xhr.open('GET', url + queryParams);
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4) {
+        if (this.status === 200) {
+          document.getElementById('result').innerText = this.responseText;
+        } else {
+          document.getElementById('result').innerText = '에러 발생: ' + this.status;
+        }
+      }
+    };
+    xhr.send();
+  </script>
+</body>
+</html>

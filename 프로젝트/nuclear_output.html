@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>원자력 발전소 실시간 출력</title>
+</head>
+<body>
+  <h2>고리 원자력 발전소 출력 현황</h2>
+  <ul id="result">불러오는 중...</ul>
+
+  <script>
+    const serviceKey = "yp9br8zY5HYVw9qRJMIoX5atZKelfO4MBqRsDmlJYb704cYxWF5guYzIL4SwZ04911iYYTO6Usv4CLZo%2F6x7Ag%3D%3D";
+    const url = `http://data.khnp.co.kr/environ/service/realtime/pwr?serviceKey=${serviceKey}&genName=KR`;
+
+    fetch(url)
+      .then(response => response.text())
+      .then(xmlString => {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+
+        const resultCode = xmlDoc.querySelector("resultCode").textContent;
+        if (resultCode !== "00") {
+          document.getElementById("result").innerText = "에러: API 요청 실패 (코드 " + resultCode + ")";
+          return;
+        }
+
+        const items = xmlDoc.querySelectorAll("item");
+        const resultList = document.getElementById("result");
+        resultList.innerHTML = "";
+
+        items.forEach(item => {
+          const expl = item.querySelector("expl")?.textContent || "";
+          const value = item.querySelector("value")?.textContent || "";
+          const time = item.querySelector("time")?.textContent || "";
+
+          const li = document.createElement("li");
+          li.innerText = `${expl}: ${value} (측정시간: ${time})`;
+          resultList.appendChild(li);
+        });
+      })
+      .catch(err => {
+        document.getElementById("result").innerText = "요청 실패: " + err;
+      });
+  </script>
+</body>
+</html>
