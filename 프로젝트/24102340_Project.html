@@ -32,9 +32,11 @@
 
   <section id="service">
     <h2>주요 서비스</h2>
-    <h3>사업소 현황</h3>
-    <p><!-- 한수원에서 운영하는 발전소(수력, 원자력 등)의 위치 정보를 지도에 표시 --></p>
-    <!-- naver map 이나 google map에서 마커로 표시하고 클릭하면 해당 발전소 소개 팝업(어렵나? 너무 어려우면 쉽게 수정 예정)-->
+    <h3 id="toggle-map" style="cursor:pointer; color:#007acc;">사업소 현황[클릭]</h3>
+      <div id="map-box" style="max-height:0; overflow:hidden; transition: max-height 0.5s ease;">
+        <img src="https://www.khnp.co.kr/site/main/images/contents/cts205_realtime_map.jpg"
+            alt="한수원 발전소 지도" style="width:100%; height:auto; margin-top:10px;">
+      </div>
     <h3>실시간 수력발전 현황</h3>
     <p>공공 API를 통해 현재 수력발전량을 실시간으로 확인할 수 있습니다.</p>
     <!-- 여기에 API 데이터를 자바스크립트로 넣을 수 있도록 영역 확보 -->
@@ -75,5 +77,18 @@
   document.getElementById("toggle-knowledge").addEventListener("click", function() {
     const box = document.getElementById("knowledge-box");
     box.style.display = (box.style.display === "none") ? "block" : "none";
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggle = document.getElementById("toggle-map");
+    const mapBox = document.getElementById("map-box");
+
+    toggle.addEventListener("click", function() {
+      if (mapBox.style.maxHeight === "0px" || mapBox.style.maxHeight === "") {
+        mapBox.style.maxHeight = "1000px";
+      } else {
+        mapBox.style.maxHeight = "0";
+      }
+    });
   });
 </script>
