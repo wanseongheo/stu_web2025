@@ -2,36 +2,78 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>회사 소개 페이지</title>
+  <title>웹프로그래밍 24102340 허완성</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>우리 회사 소개</h1>
+  <header class="gradient-bg"> <!-- CSS에서 .gradient-bg 클래스로 그라데이션 배경 지정 -->
+    <h1>한국수력원자력(주) 모니터링 시스템</h1>
     <nav>
       <a href="#about">회사소개</a>
       <a href="#service">서비스</a>
-      <a href="#contact">연락처</a>
+      <a href="#contact">오시는길</a> <!-- '연락처' 대신 더 자연스러운 표현 -->
     </nav>
   </header>
 
-  <section id="about">
+    <section id="about">
     <h2>회사소개</h2>
-    <p>우리 회사는 ~~~</p>
-  </section>
+    <h3>수력발전이란?</h3>
+    <p>수력발전은 물의 위치에너지를 이용하여 전기를 생산하는 방식입니다.</p>
+    <h3>원자력발전이란?</h3>
+    <p>원자력발전은 원자의 핵분열을 통해 발생하는 에너지를 전기로 전환하는 방식입니다.</p>
+
+    <h3 id="toggle-knowledge" style="cursor:pointer; color:#007acc;">에너지 상식 코너</h3>
+    <div id="knowledge-box" style="display:none; transition: max-height 0.5s ease;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/FHIWdqjuWQE?si=AUsJYaE5NUi6FzmS&amp;start=450"
+         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    </section>
+
 
   <section id="service">
     <h2>주요 서비스</h2>
-    <p>공공 API를 활용하여 ~~~</p>
+    <h3>사업소 현황</h3>
+    <p><!-- 한수원에서 운영하는 발전소(수력, 원자력 등)의 위치 정보를 지도에 표시 --></p>
+    <!-- naver map 이나 google map에서 마커로 표시하고 클릭하면 해당 발전소 소개 팝업(어렵나? 너무 어려우면 쉽게 수정 예정)-->
+    <h3>실시간 수력발전 현황</h3>
+    <p>공공 API를 통해 현재 수력발전량을 실시간으로 확인할 수 있습니다.</p>
+    <!-- 여기에 API 데이터를 자바스크립트로 넣을 수 있도록 영역 확보 -->
+    <div id="power-status">수력발전 정보 로딩 중...</div>
+
+    <h3>수문 자료</h3>
+    <p>각 지역 수문의 개방 상태, 수위 정보를 확인할 수 있습니다.</p>
+    <div id="gate-data">수문 정보 로딩 중...</div>
   </section>
 
   <section id="contact">
-    <h2>연락처</h2>
+    <h2>오시는 길</h2>
     <p>이메일: example@example.com</p>
+    <p>대표전화: 000-0000-0000</p>
+    <p>본사 주소: 서울시 강남구 00로 123</p>
+    <!-- 지도 삽입 예시 -->
+    <div style="width:100%; max-width:800px; height:400px; margin:0 auto;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4079540.23600951!2d70.59332678436097!3d3.1142772683815783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x24b599bfaafb7bbd%3A0x414509e181956289!2z66qw65SU67iM!5e0!3m2!1sko!2sus!4v1748355324586!5m2!1sko!2sus" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+</div>
+
   </section>
 
   <footer>
-    <p>© 2025 우리회사</p>
+    <p>© 24102340 허완성 웹프로그래밍 과제 제출 </p>
   </footer>
 </body>
 </html>
+
+<script>
+  document.getElementById("toggle-knowledge").addEventListener("click", function() {
+    const box = document.getElementById("knowledge-box");
+    box.style.display = (box.style.display === "none") ? "block" : "none";
+  });
+</script>
